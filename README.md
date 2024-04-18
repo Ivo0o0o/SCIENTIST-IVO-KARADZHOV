@@ -1,2 +1,2 @@
 # SCIENTIST-IVO-KARADZHOV
-Thank your US 
+Thank you US 
