@@ -1,4 +1,24 @@
-# Byte-compiled / optimized / DLL files
+#!/system/bin/sh
+
+cmd=$1
+shift
+
+os_version=$(getprop ro.build.version.sdk)
+
+if [ "$os_version" -eq "27" ]; then
+  cmd="$cmd -Xrunjdwp:transport=dt_android_adb,suspend=n,server=y -Xcompiler-option --debuggable $@"
+elif [ "$os_version" -eq "28" ]; then
+  cmd="$cmd -XjdwpProvider:adbconnection -XjdwpOptions:suspend=n,server=y -Xcompiler-option --debuggable $@"
+else
+  cmd="$cmd -XjdwpProvider:adbconnection -XjdwpOptions:suspend=n,server=y $@"
+fi
+
+exec $cmd
+.1
+
+
+
+# Byte-compiled/optimized/DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -27,19 +47,19 @@ share/python-wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+# Usually these files are written by a python script from a template
+# before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
-# Installer logs
+# Install logs
 pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
 .tox/
-.nox/
+.nox/ .nox/
 .coverage
 .coverage.*
 .cache
@@ -57,11 +77,11 @@ cover/
 
 # Django stuff:
 *.log
-local_settings.py
+local_settings
 db.sqlite3
 db.sqlite3-journal
 
-# Flask stuff:
+# Bottle stuff:
 instance/
 .webassets-cache
 
@@ -80,40 +100,40 @@ target/
 
 # IPython
 profile_default/
-ipython_config.py
+python_config
 
 # pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
+# For a library or package, you might want to ignore these files since the code is
+# intended to run in multiple environments; otherwise, check them in:
 # .python-version
 
 # pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
+# According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+# However, in case of collaboration, if having platform-specific dependencies or dependencies
+# Having no cross-platform support, pipenv may install dependencies that don't work, or not
+# install all needed dependencies.
 #Pipfile.lock
 
 # poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+# Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+# This is especially recommended for binary packages to ensure reproducibility, and is more
+# commonly ignored for libraries.
+# https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
 #poetry.lock
 
 # pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+# Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
 #pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/#use-with-ide
+# pdm stores project-wide configurations in .pdm.toml, but it is recommended not to include it
+# in version control.
+# https://pdm.fming.dev/#use-with-idea
 .pdm.toml
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
 
 # Celery stuff
-celerybeat-schedule
+celerybeat schedule
 celerybeat.pid
 
 # SageMath parsed files
@@ -129,7 +149,7 @@ env.bak/
 venv.bak/
 
 # Spyder project settings
-.spyderproject
+.spiderproject
 .spyproject
 
 # Rope project settings
@@ -147,14 +167,30 @@ dmypy.json
 .pyre/
 
 # pytype static type analyzer
-.pytype/
+.inside/
 
 # Cython debug symbols
 cython_debug/
 
 # PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+# JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+# be found at https://github.com/github/ignore/blob/main/Global/JetBrains.ignore
+# and can be added to the global gitignore or merged into this file.  For a more nuclear
+# option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+ #!/system/bin/sh
+
+cmd=$1
+shift
+
+os_version=$(getprop ro.build.version.sdk)
+
+if [ "$os_version" -eq "27" ]; then
+  cmd="$cmd -Xrunjdwp:transport=dt_android_adb,suspend=n,server=y -Xcompiler-option --debuggable $@"
+elif [ "$os_version" -eq "28" ]; then
+  cmd="$cmd -XjdwpProvider:adbconnection -XjdwpOptions:suspend=n,server=y -Xcompiler-option --debuggable $@"
+else
+  cmd="$cmd -XjdwpProvider:adbconnection -XjdwpOptions:suspend=n,server=y $@"
+fi
+
+exec $cmd
